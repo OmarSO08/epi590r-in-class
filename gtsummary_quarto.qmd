@@ -5,6 +5,7 @@ format: html
 
 ```{r}
 #| message: false
+
 library(tidyverse)
 library(gtsummary)
 ```
@@ -35,7 +36,7 @@ tbl_summary(
 ```
 
 ```{r}
-tbl_summary(
+table1 <- tbl_summary(
   nlsy,
   by = sex_cat,
   include = c(sex_cat, race_eth_cat, region_cat,
@@ -48,4 +49,7 @@ tbl_summary(
     age_bir ~ "Age at first birth"
   ),
   missing_text = "Missing")
+table1
 ```
+the number of Hispanic male is `r gtsummary::inline_text(table1, variable = "race_eth_cat",level= "Hispanic", column = "Male")`
+
